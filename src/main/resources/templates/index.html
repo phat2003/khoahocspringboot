@@ -6,6 +6,6 @@
 </head>
 <body>
 <h1>Hello: Spring Boot + Thymeleaf</h1>
-<p th:text=" 'message: ' + ${message} + '!'" />
+<p th:text=" 'message: ' + ${message} + '!'" /><!-- th:text đây là thuộc tính thymeleaf engine nhúng vào thẻ p trong html, $(message) là thuộc tính được định nghĩa trong model và truyền vào giá trị là hello nên khi chạy trang html sẽ hiển thị là hello -->
 </body>
 </html>
