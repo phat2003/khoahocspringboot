@@ -1,16 +1,33 @@
 package com.example.hello.controller;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ch.qos.logback.core.model.ModelUtil;
+import com.example.hello.model.Person;
 
 @Controller //tạo 1 controller để chạy các file html,css
 public class HomeController {
+	
+	private static List<Person> persons = new ArrayList<Person>();
+	static {
+		persons.add(new Person("Bill", "Gates"));
+		persons.add(new Person("Steve", "Jobs"));
+	}
+	
+	@RequestMapping(value = { "/personList" }, method = RequestMethod.GET)
+	public String personList(Model model) {
+		
+		model.addAttribute("persons", persons);
+		
+		return "personList";
+	}
 	
 	@RequestMapping("/")//gửi yêu cầu load mapping funtion welcome và gọi(mapping) từ controller đến trang index.html
 	public String welcome(final Model model) {//biến string welcome, final Model model là 1 cái model của spring cung cấp.
