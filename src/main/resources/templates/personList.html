@@ -15,8 +15,8 @@
 <th>First Name</th>
 <th>Last Name</th>
 </tr>
-<tr th:each ="person : ${persons}">
-     <td th:utext="${person.firstName}">...</td>
+<tr th:each ="person : ${persons}"><!-- khai báo dối tượng person và truyền vào đó là list persons -->
+     <td th:utext="${person.firstName}">...</td><!-- hai cái dưới này là truyền vài firstName và lastName thông qua đối tượng person -->
      <td th:utext="${person.lastName}">...</td>
 </tr>
 </table>
